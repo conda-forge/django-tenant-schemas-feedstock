@@ -1,18 +1,18 @@
 {% set name = "django-tenant-schemas" %}
-{% set version = "1.12.0" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/django-tenant-schemas-{{ version }}.tar.gz
-  sha256: 0fde4e9600e695e02adf120ea2be24f19df990cc47c6b8cb0fa169c98557430d
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 5696fab7090b00e6b4935cd37f4581ee9d3914f0d838306149c84fd4cf6624cc
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -22,7 +22,7 @@ requirements:
     - setuptools
   run:
     - python >={{ python_min }}
-    - django >=2.2
+    - django >=4.2
     - ordered-set
     - psycopg2-binary
     - six
